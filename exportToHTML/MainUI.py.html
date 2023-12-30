@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>MainUI.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde; font-style: italic;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #5c6370; font-style: italic;}
+.s3 { color: #d19a66;}
+.s4 { color: #89ca78;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainUI.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">customtkinter </span><span class="s0">import </span><span class="s1">*</span>
+<span class="s0">from </span><span class="s1">Threads.Process </span><span class="s0">import </span><span class="s1">Process</span>
+
+
+
+<span class="s0">class </span><span class="s1">UI:</span>
+
+    <span class="s0">def </span><span class="s1">screen(self):</span>
+        <span class="s0">def </span><span class="s1">handleClick():</span>
+            <span class="s2"># print(&quot;Clicked&quot;)</span>
+            <span class="s0">if not </span><span class="s1">path.get():</span>
+                <span class="s0">return </span><span class="s1">-</span><span class="s3">1</span>
+            <span class="s1">print(</span><span class="s4">&quot;Clicked&quot;</span><span class="s1">, path.get())</span>
+            <span class="s0">try</span><span class="s1">:</span>
+                <span class="s1">progressbar.start()</span>
+                <span class="s1">path.configure(state=</span><span class="s4">&quot;disabled&quot;</span><span class="s1">)</span>
+                <span class="s1">Process(path.get()).start()</span>
+                <span class="s1">app.destroy()</span>
+            <span class="s0">except </span><span class="s1">Exception </span><span class="s0">as </span><span class="s1">e:</span>
+                <span class="s1">print(</span><span class="s4">'Error'</span><span class="s1">, e)</span>
+                <span class="s1">progressbar.set(</span><span class="s3">1</span><span class="s1">)</span>
+                <span class="s1">progressbar.stop()</span>
+        <span class="s1">app = CTk()</span>
+        <span class="s1">set_default_color_theme(</span><span class="s4">&quot;green&quot;</span><span class="s1">)</span>
+        <span class="s1">app.geometry(</span><span class="s4">&quot;600x500&quot;</span><span class="s1">)</span>
+        <span class="s1">app.title(</span><span class="s4">&quot;Notes Organizer&quot;</span><span class="s1">)</span>
+        <span class="s1">path = CTkEntry(master = app, placeholder_text=</span><span class="s4">&quot;enter path ...&quot;</span><span class="s1">, width=</span><span class="s3">300</span><span class="s1">,height=</span><span class="s3">40</span><span class="s1">, text_color=</span><span class="s4">&quot;#FFCC70&quot;</span><span class="s1">)</span>
+        <span class="s1">run = CTkButton(master=app, width=</span><span class="s3">100</span><span class="s1">,height=</span><span class="s3">40</span><span class="s1">, text=</span><span class="s4">&quot;Organize&quot;</span><span class="s1">, command=handleClick)</span>
+        <span class="s1">progressbar = CTkProgressBar(app, orientation=</span><span class="s4">&quot;horizontal&quot;</span><span class="s1">,determinate_speed = </span><span class="s3">0.3</span><span class="s1">)</span>
+        <span class="s1">progressbar.set(</span><span class="s3">0</span><span class="s1">)</span>
+        <span class="s1">path.place(relx=</span><span class="s3">0.5</span><span class="s1">, rely = </span><span class="s3">0.4</span><span class="s1">, anchor = </span><span class="s4">&quot;center&quot;</span><span class="s1">)</span>
+        <span class="s1">run.place(relx=</span><span class="s3">0.5</span><span class="s1">, rely = </span><span class="s3">0.5</span><span class="s1">, anchor = </span><span class="s4">&quot;center&quot;</span><span class="s1">)</span>
+        <span class="s1">progressbar.place(relx=</span><span class="s3">0.5</span><span class="s1">, rely = </span><span class="s3">0.65</span><span class="s1">, anchor = </span><span class="s4">&quot;center&quot;</span><span class="s1">)</span>
+        <span class="s1">app.mainloop()</span></pre>
+</body>
+</html>

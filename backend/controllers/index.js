@@ -1,0 +1,1 @@
+export {singleNotesUpload} from "./upload.controller.js"

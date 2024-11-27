@@ -1,14 +1,14 @@
 import express, { Router } from "express";
 
-import {upload} from "../middleware/index.js";
-import {singleNotesUpload} from "../controllers/index.js";
+import { upload } from "../middleware/index.js";
+import {syllabusUploadController} from "../controllers/index.js";
 
 const router = Router();
 
 router.post(
-  "/photo-single",
+  "/syllabus",
   upload.single("file"),
-  singleNotesUpload
+  syllabusUploadController
 );
 
 export default router;

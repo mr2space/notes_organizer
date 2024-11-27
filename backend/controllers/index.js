@@ -1,1 +1,1 @@
-export {singleNotesUpload} from "./upload.controller.js"
+export {syllabusUploadController} from "./upload.controller.js"
